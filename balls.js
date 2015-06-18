@@ -27,8 +27,12 @@ function init()
 
 	function update() 
 	{
-		for (var i=0; i<ballsMoving.length; i++)
+		for (var i = 0; i < ballsMoving.length; i++) 
+		{
+			for (var j = 0; j < ballsMoving.length, j != i; j++)
+			ballsMoving[i].collise(ballsMoving[j]);
 			ballsMoving[i].update(dynamic);
+		}
 	}
 
 	function play() 
@@ -104,6 +108,17 @@ function ball(color, x, y, radius, dX, dY)
 			return true;
 		else 
 			return false;
+	}
+	this.collise = function(balls) 
+	{
+		var d = Math.sqrt((this.x - balls.x) * (this.x - balls.x) + (this.y - balls.y) * (this.y - balls.y));
+		if (d <= this.radius + balls.radius) 
+		{
+			this.dX = -this.dX;
+			this.dY = -this.dY;
+			balls.dX = -balls.dX;
+			balls.dY = -balls.dY;
+		}
 	}
 }
 
