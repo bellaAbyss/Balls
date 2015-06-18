@@ -16,7 +16,6 @@ function init()
 
 	function draw() 
 	{
-		//turn on clearRect for clear all canvas
 		context.clearRect(0,0, canvas.width, canvas.height)
 		static.draw();
 		dynamic.draw();
@@ -41,8 +40,8 @@ function init()
 	context = canvas.getContext('2d');
 	canvas.width = static.width + dynamic.width;
 	canvas.height = static.height + dynamic.height;	
-    canvas.onmousedown = pick;
-    canvas.onmouseup = drop;
+    	canvas.onmousedown = pick;
+    	canvas.onmouseup = drop;
 	setInterval(play, 10);
 }
 
@@ -85,7 +84,6 @@ function ball(color, x, y, radius, dX, dY)
 		}
 	}
 
-	//error
 	this.inBounds = function(rect)
 	{
 		if (this.y - this.radius > rect.minY &&
@@ -97,7 +95,6 @@ function ball(color, x, y, radius, dX, dY)
 			return false;
 	}
 
-	//error
 	this.hit = function(x,y)
 	{
 		if (y > this.y - this.radius &&
@@ -128,7 +125,6 @@ function rect(color, x, y, width, height)
 	}
 }
 
-//error - ball, but array is balls!
 function pick(e)
 {
 	for (var i = 0; i<balls.length; i++)
@@ -137,8 +133,6 @@ function pick(e)
 		{
 			clicked = true;
 			ballId = i;
-			//error, function is not declared
-			//canvas.onmousemove = myMove;
 			canvas.onmousemove = drag;
 		}
 	}
