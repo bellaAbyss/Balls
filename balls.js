@@ -1,5 +1,6 @@
 clicked = false;
 ballId = -1;
+var canvas = null;
 
 function init() 
 {
@@ -45,7 +46,6 @@ function init()
 	canvas.width = static.width + dynamic.width;
 	canvas.height = static.height + dynamic.height;	
     	canvas.onmousedown = pick;
-    	canvas.onmouseup = drop;
 	setInterval(play, 10);
 }
 
@@ -149,6 +149,7 @@ function pick(e)
 			clicked = true;
 			ballId = i;
 			canvas.onmousemove = drag;
+			canvas.onmouseup = drop;
 		}
 	}
 }
@@ -172,4 +173,5 @@ function drop(e)
 		clicked = false;
 	}
 	canvas.onmousemove = null;
+	canvas.onmouseup = null;
 }
