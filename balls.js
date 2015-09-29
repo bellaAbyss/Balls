@@ -2,6 +2,8 @@ clicked = false;
 ballId = -1;
 var canvas = null;
 
+var testProperties = "new properties";
+
 function init() 
 {
 	static = new rect("#DEB887", 0, 0, 320, 240);
